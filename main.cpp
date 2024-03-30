@@ -18,7 +18,8 @@ int main() {
         // Clear the window
         window.clear();
 
-        // Draw SFML objects (currently none)
+        // Draw SFML objects (currently none) 
+        // adding comment 
 
         // Display what was drawn
         window.display();
