@@ -19,7 +19,7 @@ int main() {
         window.clear();
         
         // Draw SFML objects (currently none) 
-        // adding comment 
+        
 
 
         // Display what was drawn
