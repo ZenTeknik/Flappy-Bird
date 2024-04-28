@@ -28,5 +28,7 @@ namespace Sonar
 		sf::Clock _clock;
 
 		GameDataRef _data = std::make_shared<GameData>();
+
+		void Run();
 	};
 }
