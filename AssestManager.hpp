@@ -8,7 +8,7 @@ namespace Sonar {
 	public:
 	AssestManager(){}
 
-	~AssetManager(){}
+	~AssestManager(){}
 
 	void LoadTexture(std::string name, std::string filename);
 	sf::Texture& GetTexture(std::string name);
