@@ -1,38 +1,33 @@
+//This is a C++ header file for a State Machine class. It includes the necessary headers and defines the class and its member functions. The `#pragma once` directive is a header guard that ensures the file is only included once during compilation. The `namespace Team_Error` defines the namespace for the class. The class has member variables `_states`, `_newState`, `_remove`, `_add`, and `_replace`, and member functions `AddState()`, `RemoveState()`, `ProcessStateChanges()`, and `GetActiveState()`. The `typedef std::unique_ptr<State> StateRef` creates an alias for a unique pointer to a `State` object.
 #pragma once
-
-#ifndef STATE_MACHINE_HPP
-#define STATE_MACHINE_HPP
 
 #include <memory>
 #include <stack>
-#include "state.hpp"
 
-namespace Sonar {
-    typedef std::unique_ptr<state> StateRef;
+#include "State.hpp"
 
-    class StateMachine {
-    public: 
-        // State machine constructor 
-        StateMachine() : _isRemoving(false), _isAdding(false), _isReplacing(false) {}
+namespace Team_Error
+{
+	typedef std::unique_ptr<State> StateRef;
 
-        // State Machine destructor 
-        ~StateMachine() {}
+	class StateMachine
+	{
+	public:
+		StateMachine() { }
+		~StateMachine() { }
 
-        // When you click the play button, you have to go
-        void AddState(StateRef newState, bool isReplacing = true);
-        void RemoveState();
-        void ProcessStateChanges();
-        StateRef& GetActiveState();
+		void AddState(StateRef newState, bool replace = true);
+		void RemoveState();
+		// Run at start of each loop in Game.cpp
+		void ProcessStateChanges();
 
-    private:
-        std::stack<StateRef> _states;
-        StateRef _newState;
+		StateRef& GetActiveState();
 
-        bool _isRemoving;
-        bool _isAdding;
-        bool _isReplacing;
-    };
+	private:
+		std::stack<StateRef> _states;
+		StateRef _newState;
 
-} // namespace Sonar
-
-#endif // STATE_MACHINE_HPP
+		bool _remove;
+		bool _add, _replace;
+	};
+}
